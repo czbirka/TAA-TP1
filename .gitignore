@@ -1,0 +1,8 @@
+/target/
+/src/main/resources/META-INF/persistence.xml
+.classpath
+.project
+.settings/*
+Dia*
+/bin/*
+
