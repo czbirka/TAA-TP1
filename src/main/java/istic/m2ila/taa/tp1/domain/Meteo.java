@@ -1,4 +1,4 @@
-package istic.m2ila.taa.tp1b.domain;
+package istic.m2ila.taa.tp1.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

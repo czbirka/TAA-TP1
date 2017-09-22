@@ -1,4 +1,4 @@
-package istic.m2ila.taa.tp1b.dao;
+package istic.m2ila.taa.tp1.dao;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package istic.m2ila.taa.tp1b.jpa;
+package istic.m2ila.taa.tp1.jpa;
 
 
 	import java.util.List;
@@ -8,11 +8,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import istic.m2ila.taa.tp1b.dao.DAO;
-import istic.m2ila.taa.tp1b.dao.PersonDAO;
-import istic.m2ila.taa.tp1b.domain.Lieu;
-import istic.m2ila.taa.tp1b.domain.Person;
-import istic.m2ila.taa.tp1b.domain.Sport;
+import istic.m2ila.taa.tp1.dao.DAO;
+import istic.m2ila.taa.tp1.dao.PersonDAO;
+import istic.m2ila.taa.tp1.domain.Lieu;
+import istic.m2ila.taa.tp1.domain.Person;
+import istic.m2ila.taa.tp1.domain.Sport;
 
 	public class JpaTest {
 
@@ -57,17 +57,17 @@ import istic.m2ila.taa.tp1b.domain.Sport;
 			test.listLieux();
 			test.listSports();
 			
-			PersonDAO personDao = new PersonDAO(manager);
+			PersonDAO personDao = new PersonDAO();
 			
-			List<Person> liste = personDao.find();
-			for (Person p : liste) {
-				System.out.println("-- " + p.getName() + " - " + p.getFirstname());
-			}
+			//List<Person> liste = personDao.find();
+			//for (Person p : liste) {
+			//	System.out.println("-- " + p.getName() + " - " + p.getFirstname());
+			//}
 			
 			long n = 1;
-			Person p = personDao.find(n);
-			System.out.println("****************");
-			System.out.println("Person #" + p.getId() + " : " + p.getName() + "-" + p.getFirstname());
+			//Person p = personDao.find(n);
+			//System.out.println("****************");
+			//System.out.println("Person #" + p.getId() + " : " + p.getName() + "-" + p.getFirstname());
 			
 			manager.close();
 			EntityManagerHelper.closeEntityManagerFactory();

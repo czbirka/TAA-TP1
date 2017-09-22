@@ -1,4 +1,4 @@
-package istic.m2ila.taa.tp1b.domain;
+package istic.m2ila.taa.tp1.domain;
 
 import java.util.ArrayList;
 import java.util.List;

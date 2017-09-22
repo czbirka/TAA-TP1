@@ -1,4 +1,4 @@
-package istic.m2ila.taa.tp1b.dao;
+package istic.m2ila.taa.tp1.dao;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import javax.persistence.Query;
 
 import com.mysql.jdbc.Connection;
 
-import istic.m2ila.taa.tp1b.domain.Lieu;
-import istic.m2ila.taa.tp1b.domain.Person;
+import istic.m2ila.taa.tp1.domain.Lieu;
+import istic.m2ila.taa.tp1.domain.Person;
 
 public class LieuDAO extends DAO<Lieu> {
 

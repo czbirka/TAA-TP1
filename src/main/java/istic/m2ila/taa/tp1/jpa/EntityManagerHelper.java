@@ -1,4 +1,4 @@
-package istic.m2ila.taa.tp1b.jpa;
+package istic.m2ila.taa.tp1.jpa;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
