@@ -8,77 +8,68 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 
-import com.mysql.jdbc.Connection;
+import istic.m2ila.taa.tp1.domain.Region;
 
-import istic.m2ila.taa.tp1.domain.Lieu;
-import istic.m2ila.taa.tp1.domain.Person;
+public class RegionDAO {
 
-public class LieuDAO {
-	
 	EntityManagerFactory factory = Persistence.createEntityManagerFactory("dev");
 	EntityManager manager = factory.createEntityManager();
-
-//	public LieuDAO(EntityManager manager) {
-//		super(manager);
-//		// TODO Auto-generated constructor stub
-//	}
-
-	public List<Lieu> findAll() {
-		List<Lieu> result = new ArrayList<Lieu>();
+	
+	public List<Region> findAll() {
+		List<Region> result = new ArrayList<Region>();
 		try {
-			result = manager.createQuery("select l from Lieu as l").getResultList();
+			result = manager.createQuery("select r from Region as r").getResultList();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return result;
 	}
 	
-	public Optional<Lieu> findOneById(long id) {
-		Optional<Lieu> lieu = Optional.empty();
+	public Optional<Region> findOneById(long id) {
+		Optional<Region> region = Optional.empty();
 		try {
-			lieu = Optional.of(manager.createQuery("select l from Lieu as l where l.id = :id", Lieu.class)
+			region = Optional.of(manager.createQuery("select r from Region as r where r.id = :id", Region.class)
 					.setParameter("id", id).getSingleResult());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return lieu;
+		return region;
 	}
 	
-	public Optional<Lieu> findOneByName(String name) {
-		Optional<Lieu> lieu = Optional.empty();
+	public Optional<Region> findOneByName(String name) {
+		Optional<Region> region = Optional.empty();
 		try {
-			lieu = Optional.of(manager.createQuery("select l from Lieu as l where l.nom = :name", Lieu.class)
+			region = Optional.of(manager.createQuery("select r from Region as r where r.nom = :name", Region.class)
 					.setParameter("name", name).getSingleResult());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return lieu;
+		return region;
 	}
 	
-	public boolean create(Lieu l) {
+	public boolean create(Region r) {
 		EntityTransaction tx = manager.getTransaction();
 		tx.begin();
-		manager.persist(l);
+		manager.persist(r);
 		tx.commit();
 		return true;
 	}
 	
-	public boolean update(Lieu l) {
+	public boolean update(Region r) {
 		EntityTransaction tx = manager.getTransaction();
 		tx.begin();
-		manager.merge(l);
+		manager.merge(r);
 		tx.commit();
 		return true;
 	}
-
-	public boolean delete(Lieu l) {
+	
+	public boolean delete(Region r) {
 		EntityTransaction tx = manager.getTransaction();
 		tx.begin();
-		manager.remove(l);
+		manager.remove(r);
 		tx.commit();
 		return true;
 	}
-
+	
 }

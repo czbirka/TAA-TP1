@@ -51,6 +51,7 @@ import istic.m2ila.taa.tp1.domain.Sport;
 			test.listPersons();
 			test.listLieux();
 			test.listSports();
+			test.listRegions();
 			
 			manager.close();
 			EntityManagerHelper.closeEntityManagerFactory();
@@ -133,17 +134,21 @@ import istic.m2ila.taa.tp1.domain.Sport;
 	        if (numOfRegions == 0) {
 	        	Region r1 = new Region();
 	        	r1.setNom("Region1");
+	        	manager.persist(r1);
 	        	Region r2 = new Region();
-	        	r1.setNom("Region2");
+	        	r2.setNom("Region2");
+	        	manager.persist(r2);
 	        	Region r3 = new Region();
-	        	r1.setNom("Region3");
+	        	r3.setNom("Region3");
+	        	manager.persist(r3);
 	        } 
 	    }
 	    
 	    private void listRegions() {
 	        List<Region> resultList = manager.createQuery("Select r From Region r", Region.class).getResultList();
 	        System.out.println("num of regions:" + resultList.size());
-	        for (Region next : resultList) {	            System.out.println("next region: " + next);
+	        for (Region next : resultList) {
+	        	System.out.println("next region: " + next);
 	        }
 	    }
 	    

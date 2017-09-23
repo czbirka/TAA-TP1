@@ -11,6 +11,7 @@ import org.jboss.resteasy.plugins.server.undertow.UndertowJaxrsServer;
 import io.undertow.Undertow;
 import istic.m2ila.taa.tp1.web.rest.LieuResource;
 import istic.m2ila.taa.tp1.web.rest.PersonResource;
+import istic.m2ila.taa.tp1.web.rest.RegionResource;
 //import web.rest.DepartementResource;
 //import web.rest.EmployeeResource;
 //import web.rest.SwaggerResource;
@@ -37,6 +38,7 @@ public class App extends Application
         // REST endpoints
         resources.add(PersonResource.class);
         resources.add(LieuResource.class);
+        resources.add(RegionResource.class);
 
         return resources;
     }
