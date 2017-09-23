@@ -31,8 +31,8 @@ public class PersonResource {
 	@GET
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getById(@PathParam("id") String id) {
-		return personDao.findOneById(Long.parseLong(id)).map(e -> Response.ok().entity(e).build())
+	public Response getById(@PathParam("id") long id) {
+		return (Response) personDao.findOneById(id).map(e -> Response.ok().entity(e).build())
 				.orElse(Response.status(Response.Status.NOT_FOUND).build());
 	}
 
@@ -40,7 +40,7 @@ public class PersonResource {
 	@Path("name/{name}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getByName(@PathParam("name") String name) {
-		return personDao.findOneByName(name).map(e -> Response.ok().entity(e).build())
+		return (Response) personDao.findOneByName(name).map(e -> Response.ok().entity(e).build())
 				.orElse(Response.status(Response.Status.NOT_FOUND).build());
 	}
 
@@ -57,9 +57,9 @@ public class PersonResource {
 	@POST
 	@Path("{id}/{name}/{firstname}")
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public void update(@PathParam("id") String id, @PathParam("name") String name,
+	public void update(@PathParam("id") long id, @PathParam("name") String name,
 			@PathParam("firstname") String firstname) {
-		Optional<Person> p = personDao.findOneById(Long.parseLong(id));
+		Optional<Person> p = personDao.findOneById(id);
 		if (p.isPresent()) {
 			Person pp = p.get();
 			pp.setName(name);
@@ -71,8 +71,8 @@ public class PersonResource {
 	@POST
 	@Path("{id}/{name}")
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public void updateName(@PathParam("id") String id, @PathParam("name") String name)  {
-		Optional<Person> p = personDao.findOneById(Long.parseLong(id));
+	public void updateName(@PathParam("id") long id, @PathParam("name") String name)  {
+		Optional<Person> p = personDao.findOneById(id);
 		if (p.isPresent()) {
 			Person pp = p.get();
 			pp.setName(name);
@@ -83,9 +83,9 @@ public class PersonResource {
 	@POST
 	@Path("{id}//{firstname}")
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public void updateFirstname(@PathParam("id") String id, 
+	public void updateFirstname(@PathParam("id") long id, 
 			@PathParam("firstname") String firstname) {
-		Optional<Person> p = personDao.findOneById(Long.parseLong(id));
+		Optional<Person> p = personDao.findOneById(id);
 		if (p.isPresent()) {
 			Person pp = p.get();
 			pp.setFirstname(firstname);
@@ -96,8 +96,8 @@ public class PersonResource {
 	@DELETE
 	@Path("{id}")
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public void delete(@PathParam("id") String id) {
-		Optional<Person> p = personDao.findOneById(Long.parseLong(id));
+	public void delete(@PathParam("id") long id) {
+		Optional<Person> p = personDao.findOneById(id);
 		if (p.isPresent()) {
 			Person pp = p.get();
 			personDao.delete(pp);
