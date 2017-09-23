@@ -12,6 +12,7 @@ import istic.m2ila.taa.tp1.dao.DAO;
 import istic.m2ila.taa.tp1.dao.PersonDAO;
 import istic.m2ila.taa.tp1.domain.Lieu;
 import istic.m2ila.taa.tp1.domain.Person;
+import istic.m2ila.taa.tp1.domain.Region;
 import istic.m2ila.taa.tp1.domain.Sport;
 
 	public class JpaTest {
@@ -40,34 +41,16 @@ import istic.m2ila.taa.tp1.domain.Sport;
 				test.createPersons();
 				test.createLieux();
 				test.createSports();
+				test.createRegions();
 				
-				//Person p = new Person();
-				//p.setFirstname("Olivier");
-				//manager.persist(p);
-			
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			tx.commit();
-			
-			//List<Person> ps = manager.createQuery("select p from Person as p").getResultList();
-			//System.err.println(ps.size());
-			
+
 			test.listPersons();
 			test.listLieux();
 			test.listSports();
-			
-			PersonDAO personDao = new PersonDAO();
-			
-			//List<Person> liste = personDao.find();
-			//for (Person p : liste) {
-			//	System.out.println("-- " + p.getName() + " - " + p.getFirstname());
-			//}
-			
-			long n = 1;
-			//Person p = personDao.find(n);
-			//System.out.println("****************");
-			//System.out.println("Person #" + p.getId() + " : " + p.getName() + "-" + p.getFirstname());
 			
 			manager.close();
 			EntityManagerHelper.closeEntityManagerFactory();
@@ -96,7 +79,8 @@ import istic.m2ila.taa.tp1.domain.Sport;
 	    private void listPersons() {
 	        List<Person> resultList = manager.createQuery("Select a From Person a", Person.class).getResultList();
 	        System.out.println("num of persons:" + resultList.size());
-	        for (Person next : resultList) {	            System.out.println("next employee: " + next);
+	        for (Person next : resultList) {
+	        	System.out.println("next employee: " + next);
 	        }
 	    }
 	    
@@ -141,6 +125,25 @@ import istic.m2ila.taa.tp1.domain.Sport;
 	        List<Sport> resultList = manager.createQuery("Select a From Sport a", Sport.class).getResultList();
 	        System.out.println("num of sports:" + resultList.size());
 	        for (Sport next : resultList) {	            System.out.println("next sport: " + next);
+	        }
+	    }
+	    
+	    private void createRegions() {
+	    	int numOfRegions = manager.createQuery("Select r From Region r", Region.class).getResultList().size();
+	        if (numOfRegions == 0) {
+	        	Region r1 = new Region();
+	        	r1.setNom("Region1");
+	        	Region r2 = new Region();
+	        	r1.setNom("Region2");
+	        	Region r3 = new Region();
+	        	r1.setNom("Region3");
+	        } 
+	    }
+	    
+	    private void listRegions() {
+	        List<Region> resultList = manager.createQuery("Select r From Region r", Region.class).getResultList();
+	        System.out.println("num of regions:" + resultList.size());
+	        for (Region next : resultList) {	            System.out.println("next region: " + next);
 	        }
 	    }
 	    
