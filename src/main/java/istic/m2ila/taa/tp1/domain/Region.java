@@ -3,11 +3,14 @@ package istic.m2ila.taa.tp1.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+
+import org.codehaus.jackson.annotate.JsonManagedReference;
 
 @Entity
 public class Region {
@@ -35,13 +38,19 @@ public class Region {
 		this.nom = nom;
 	}
 
-	@OneToMany(mappedBy="region")
+	@OneToMany(mappedBy="region", cascade={CascadeType.PERSIST,CascadeType.MERGE})
+	@JsonManagedReference
+	//@OneToMany(mappedBy="region")
 	public List<Departement> getDepartements() {
 		return departements;
 	}
 
 	public void setDepartements(List<Departement> departements) {
 		this.departements = departements;
+	}
+	
+	public void addDepartement(Departement dept) {
+		this.getDepartements().add(dept);
 	}
 
 }

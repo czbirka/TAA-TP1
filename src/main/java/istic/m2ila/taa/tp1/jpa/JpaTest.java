@@ -143,6 +143,21 @@ import istic.m2ila.taa.tp1.domain.Sport;
 	        	manager.persist(r2);
 	        	Region r3 = new Region();
 	        	r3.setNom("Region3");
+	        	
+	        	Departement d1 = new Departement();
+	        	d1.setNom("DepartementA");
+	        	d1.setRegion(r3);
+	        	Departement d2 = new Departement();
+	        	d2.setNom("DepartementB");
+	        	d2.setRegion(r3);
+	        	Departement d3 = new Departement();
+	        	d3.setNom("DepartementD");
+	        	d3.setRegion(r3);
+	        	
+	        	r3.addDepartement(d1);
+	        	r3.addDepartement(d2);
+	        	r3.addDepartement(d3);
+	        	
 	        	manager.persist(r3);
 	        } 
 	    }

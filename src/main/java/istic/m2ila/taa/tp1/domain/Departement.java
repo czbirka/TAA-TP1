@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+import org.codehaus.jackson.annotate.JsonManagedReference;
+
 @Entity
 public class Departement {
 
@@ -37,6 +40,7 @@ public class Departement {
 	}
 
 	@ManyToOne
+	@JsonBackReference
 	public Region getRegion() {
 		return region;
 	}
