@@ -13,6 +13,7 @@ import istic.m2ila.taa.tp1.web.rest.DepartementResource;
 import istic.m2ila.taa.tp1.web.rest.LieuResource;
 import istic.m2ila.taa.tp1.web.rest.PersonResource;
 import istic.m2ila.taa.tp1.web.rest.RegionResource;
+import istic.m2ila.taa.tp1.web.rest.SportResource;
 //import web.rest.DepartementResource;
 //import web.rest.EmployeeResource;
 //import web.rest.SwaggerResource;
@@ -41,6 +42,7 @@ public class App extends Application
         resources.add(LieuResource.class);
         resources.add(RegionResource.class);
         resources.add(DepartementResource.class);
+        resources.add(SportResource.class);
 
         return resources;
     }
