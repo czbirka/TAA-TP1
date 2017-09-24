@@ -9,6 +9,7 @@ import org.jboss.resteasy.plugins.server.undertow.UndertowJaxrsServer;
 
 //import io.swagger.jaxrs.config.BeanConfig;
 import io.undertow.Undertow;
+import istic.m2ila.taa.tp1.web.rest.DepartementResource;
 import istic.m2ila.taa.tp1.web.rest.LieuResource;
 import istic.m2ila.taa.tp1.web.rest.PersonResource;
 import istic.m2ila.taa.tp1.web.rest.RegionResource;
@@ -39,6 +40,7 @@ public class App extends Application
         resources.add(PersonResource.class);
         resources.add(LieuResource.class);
         resources.add(RegionResource.class);
+        resources.add(DepartementResource.class);
 
         return resources;
     }

@@ -10,6 +10,7 @@ import javax.persistence.Persistence;
 
 import istic.m2ila.taa.tp1.dao.DAO;
 import istic.m2ila.taa.tp1.dao.PersonDAO;
+import istic.m2ila.taa.tp1.domain.Departement;
 import istic.m2ila.taa.tp1.domain.Lieu;
 import istic.m2ila.taa.tp1.domain.Person;
 import istic.m2ila.taa.tp1.domain.Region;
@@ -42,6 +43,7 @@ import istic.m2ila.taa.tp1.domain.Sport;
 				test.createLieux();
 				test.createSports();
 				test.createRegions();
+				test.createDepartements();
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -52,6 +54,7 @@ import istic.m2ila.taa.tp1.domain.Sport;
 			test.listLieux();
 			test.listSports();
 			test.listRegions();
+			test.listDepartements();
 			
 			manager.close();
 			EntityManagerHelper.closeEntityManagerFactory();
@@ -148,6 +151,29 @@ import istic.m2ila.taa.tp1.domain.Sport;
 	        List<Region> resultList = manager.createQuery("Select r From Region r", Region.class).getResultList();
 	        System.out.println("num of regions:" + resultList.size());
 	        for (Region next : resultList) {
+	        	System.out.println("next region: " + next);
+	        }
+	    }
+	    
+	    private void createDepartements() {
+	    	int numOfDepartements = manager.createQuery("Select d From Departement d", Departement.class).getResultList().size();
+	        if (numOfDepartements == 0) {
+	        	Departement d1 = new Departement();
+	        	d1.setNom("Departement1");
+	        	manager.persist(d1);
+	        	Departement d2 = new Departement();
+	        	d2.setNom("Departement2");
+	        	manager.persist(d2);
+	        	Departement d3 = new Departement();
+	        	d3.setNom("Departement3");
+	        	manager.persist(d3);
+	        } 
+	    }
+	    
+	    private void listDepartements() {
+	        List<Departement> resultList = manager.createQuery("Select d From Departement d", Departement.class).getResultList();
+	        System.out.println("num of departements:" + resultList.size());
+	        for (Departement next : resultList) {
 	        	System.out.println("next region: " + next);
 	        }
 	    }
